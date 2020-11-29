@@ -202,7 +202,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			indicatorWindow?.animator().setFrame(frameHidden, display: false, animate: anim)
 		}
 	}
-
+	
 }
 
 func debugOut(str: String) {

@@ -7,7 +7,6 @@
 
 import Cocoa
 
-
 class PreferencesViewController: NSViewController {
 	
 	@IBOutlet weak var transparencySlider: NSSlider!
@@ -28,8 +27,6 @@ class PreferencesViewController: NSViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 		debugOut(str: "view did load")
-//		transparencySliderValue.stringValue = String(transparencySlider.intValue)
-//		sizeSliderValue.stringValue = String(sizeSlider.intValue)
 		NSEvent.addLocalMonitorForEvents(matching: .flagsChanged) { (event) -> NSEvent? in
 			self.appDelegate.flagsChanged(with: event)
 		    return event
@@ -44,7 +41,8 @@ class PreferencesViewController: NSViewController {
 	}
 		
 	override func viewWillAppear() {
-		print("view will appear!")
+		debugOut(str: "view will appear!")
+		
 		let flatColor: NSColor = appDelegate.indicatorColor.withAlphaComponent(1.0)
 		colorWell.color = flatColor
 		
@@ -88,7 +86,7 @@ class PreferencesViewController: NSViewController {
 	}
 	
 	@IBAction func animatedSwitchAction(_ sender: NSSwitch) {
-		print("switch: \(sender.state)")
+		debugOut(str: "switch: \(sender.state)")
 		appDelegate.animateIndicator = (sender.state == .on)
 	}
 	
